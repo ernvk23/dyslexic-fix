@@ -23,6 +23,7 @@ const excludeSiteCheckbox = document.getElementById('excludeSite');
 let currentDomain = null;
 let updateTimeout;
 let isToggling = false;
+let currentEnabledState = false; // Local state for immediate UI updates
 
 function formatSpacing(value) {
     const result = value / 1000;
@@ -62,8 +63,8 @@ function updateSliderDisabledState(isExcluded, isGloballyEnabled) {
 
 // Load settings
 chrome.storage.local.get(['enabled', 'letterSpacing', 'wordSpacing', 'lineHeight', 'fontSize', 'excludedDomains'], (result) => {
-
-    updateToggleUI(result.enabled || false);
+    currentEnabledState = result.enabled || false;
+    updateToggleUI(currentEnabledState);
     letterSlider.value = result.letterSpacing !== undefined ? result.letterSpacing : defaults.letterSpacing;
     wordSlider.value = result.wordSpacing !== undefined ? result.wordSpacing : defaults.wordSpacing;
     lineSlider.value = result.lineHeight !== undefined ? result.lineHeight : defaults.lineHeight;
@@ -71,7 +72,7 @@ chrome.storage.local.get(['enabled', 'letterSpacing', 'wordSpacing', 'lineHeight
     updateDisplayValues();
 
     // Initialize exclusion list logic
-    initializeExclusion(result.excludedDomains || [], result.enabled || false);
+    initializeExclusion(result.excludedDomains || [], currentEnabledState);
 });
 
 async function initializeExclusion(excludedDomains, isGloballyEnabled) {
@@ -154,7 +155,12 @@ toggleBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // Prevent multiple rapid clicks
+    // IMMEDIATE UI FEEDBACK - update UI first for instant response
+    const newState = !currentEnabledState;
+    currentEnabledState = newState;
+    updateToggleUI(newState);
+
+    // Prevent multiple rapid clicks - lock after UI update
     if (isToggling) {
         // Toggle already in progress, ignoring click
         return;
@@ -164,17 +170,9 @@ toggleBtn.addEventListener('click', async (e) => {
     // Toggle initiated
 
     try {
-        // Get current state
-        const result = await chrome.storage.local.get('enabled');
-        const newState = !result.enabled;
-        // Toggling extension state
-
-        // Update storage FIRST as the single source of truth
+        // Update storage as the single source of truth
         await chrome.storage.local.set({ enabled: newState });
         // Storage updated
-
-        // Update UI to match
-        updateToggleUI(newState);
 
         // Update slider disabled state
         const { excludedDomains } = await chrome.storage.local.get('excludedDomains');
@@ -185,51 +183,47 @@ toggleBtn.addEventListener('click', async (e) => {
         await chrome.action.setBadgeText({ text: newState ? 'ON' : '' });
         await chrome.action.setBadgeBackgroundColor({ color: '#d4af37' });
 
-        // Send message to all eligible tabs
-        const tabs = await chrome.tabs.query({});
+        // Send message to active tab first for immediate feedback
+        const [activeTab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (activeTab && activeTab.url && !restrictedProtocols.some(p => activeTab.url.startsWith(p))) {
+            try {
+                await chrome.tabs.sendMessage(activeTab.id, {
+                    action: 'toggle',
+                    enabled: newState
+                });
+            } catch (e) {
+                // Content script not ready in active tab
+            }
+        }
 
-        const messageTasks = tabs
-            .filter(tab => tab.url && !restrictedProtocols.some(p => tab.url.startsWith(p)))
-            .map(async (tab) => {
-                try {
-                    const response = await chrome.tabs.sendMessage(tab.id, {
-                        action: 'toggle',
-                        enabled: newState
-                    });
-                    // Toggle sent to tab
-                } catch (e) {
-                    // Content script not ready, inject it manually
-                    // Content script not ready, injecting
-                    try {
-                        await chrome.scripting.executeScript({
-                            target: { tabId: tab.id },
-                            files: ['content.js']
-                        });
-                        // Wait a bit for injection to complete
-                        await new Promise(resolve => setTimeout(resolve, 100));
-                        // Try sending message again
-                        await chrome.tabs.sendMessage(tab.id, {
-                            action: 'toggle',
-                            enabled: newState
-                        });
-                        // Successfully injected and toggled tab
-                    } catch (injectError) {
-                        // Could not inject into tab
-                    }
-                }
+        // Send messages to other tabs in background without waiting
+        chrome.tabs.query({}).then(tabs => {
+            const otherTabs = tabs.filter(tab =>
+                tab.url &&
+                !restrictedProtocols.some(p => tab.url.startsWith(p)) &&
+                tab.id !== activeTab?.id
+            );
+
+            otherTabs.forEach(tab => {
+                chrome.tabs.sendMessage(tab.id, {
+                    action: 'toggle',
+                    enabled: newState
+                }).catch(() => {
+                    // Content script not ready in background tab
+                });
             });
-
-        await Promise.allSettled(messageTasks);
-        // Toggle messages sent to all tabs
+        });
 
     } catch (error) {
-        // Toggle error
+        // Toggle error - revert UI if storage operation fails
+        currentEnabledState = !newState;
+        updateToggleUI(currentEnabledState);
     } finally {
         // Longer delay to prevent accidental double-clicks
         setTimeout(() => {
             isToggling = false;
             // Toggle lock released
-        }, 200);
+        }, 150);
     }
 });
 
@@ -244,12 +238,12 @@ function handleSliderInput() {
     // Clear any existing timeout
     clearTimeout(updateTimeout);
 
-    // Set a new timeout to send update after 100ms of inactivity
+    // Set a new timeout to send update after 150ms of inactivity (reduced from 100ms)
     updateTimeout = setTimeout(() => {
         if (isSliderActive) {
             sendUpdate();
         }
-    }, 100);
+    }, 20);
 }
 
 function handleSliderChange() {
@@ -328,7 +322,7 @@ function handleSliderWheel(event) {
         if (isSliderActive) {
             sendUpdate();
         }
-    }, 100);
+    }, 20);
 }
 
 // Attach slider event listeners

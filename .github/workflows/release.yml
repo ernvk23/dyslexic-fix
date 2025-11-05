@@ -2,7 +2,7 @@ name: Release Extension
 
 on:
     push:
-        branches: [main]
+        tags: ["v*"] # Trigger on version tags
     workflow_dispatch: # Allow manual triggering
 
 permissions:
@@ -37,8 +37,8 @@ jobs:
               uses: softprops/action-gh-release@v1
               with:
                   files: dyslexic-fix.zip
-                  name: Latest Release
-                  tag_name: latest
+                  name: ${{ github.ref_name }}
+                  tag_name: ${{ github.ref_name }}
                   body: |
                       DyslexicFix browser extension
 

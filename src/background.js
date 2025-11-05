@@ -1,9 +1,12 @@
+
+
+
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.get(['enabled', 'letterSpacing', 'wordSpacing', 'lineHeight', 'fontSize', 'excludedDomains'], (result) => {
         const defaults = {
             enabled: result.enabled ?? false,
-            letterSpacing: result.letterSpacing ?? -30,
-            wordSpacing: result.wordSpacing ?? -100,
+            letterSpacing: result.letterSpacing ?? -50,
+            wordSpacing: result.wordSpacing ?? -200,
             lineHeight: result.lineHeight ?? 140,
             fontSize: result.fontSize ?? 100,
             excludedDomains: result.excludedDomains ?? []
@@ -28,10 +31,20 @@ chrome.runtime.onStartup.addListener(() => {
     });
 });
 
-function isRestrictedUrl(url) {
-    const restrictedProtocols = ['chrome://', 'chrome-extension://', 'file://', 'about:', 'edge://', 'brave://', 'data:'];
-    return restrictedProtocols.some(protocol => url.startsWith(protocol));
-}
+chrome.storage.onChanged.addListener(async (changes, namespace) => {
+    if (namespace === 'local') {
+        // Handle badge text update for 'enabled' state
+        if (changes.enabled) {
+            if (changes.enabled.newValue) {
+                chrome.action.setBadgeText({ text: 'ON' });
+                chrome.action.setBadgeBackgroundColor({ color: '#b8860b' });
+            } else {
+                chrome.action.setBadgeText({ text: '' });
+            }
+        }
+
+    }
+});
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // Validate message origin - only accept from this extension
