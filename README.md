@@ -8,13 +8,13 @@ For some of us, that small change makes reading a lot easier. ✨
 ## Features
 
 * **Instant Toggle:** Turn it on or off with one click
+* **Theme Switching:** Choose between light, dark, or system themes
 * **Custom Settings:** Adjust spacing, line height, and font size
 * **Site Exclusion:** Skip pages where it could cause issues
-* **Works Everywhere:** Compatible with most Chromium browsers
 
 ## Sample
 
-<img src="./assets/sample.png" alt="Sample" width="200">
+<img src="./app/assets/sample.png" alt="Sample" width="200">
 
 ## Installation (Chromium Browsers)
 
