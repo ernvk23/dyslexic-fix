@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "DyslexicFix Beta",
-    "version": "0.2",
+    "name": "DyslexiaAway Beta",
+    "version": "0.3",
     "description": "Applies OpenDyslexic font and custom settings to improve readability for those who struggle with common fonts.",
     "permissions": [
         "storage",
@@ -22,7 +22,7 @@
             "48": "assets/icons/icon48.png",
             "128": "assets/icons/icon128.png"
         },
-        "default_title": "DyslexicFix",
+        "default_title": "DyslexiaAway",
         "default_popup": "popup.html"
     },
     "content_scripts": [

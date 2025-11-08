@@ -29,14 +29,14 @@ jobs:
             - name: Create or Update Release
               uses: softprops/action-gh-release@v1
               with:
-                  files: dist/dyslexic-fix.zip
+                  files: dist/dyslexia-away.zip
                   name: ${{ github.ref_name }}
                   tag_name: ${{ github.ref_name }}
                   body: |
-                      DyslexicFix browser extension
+                      DyslexiaAway browser extension
 
                       ## Installation
-                      1. Download the `dyslexic-fix.zip` file
+                      1. Download the `dyslexia-away.zip` file
                       2. Go to `chrome://extensions`
                       3. Enable "Developer mode"
                       4. Drag and drop the ZIP file onto the page

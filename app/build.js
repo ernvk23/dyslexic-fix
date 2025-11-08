@@ -58,7 +58,7 @@ function copyDirectory(source, destination) {
 
 function buildExtension() {
     try {
-        console.log('Building DyslexicFix extension...');
+        console.log('Building DyslexiaAway extension...');
 
         // Clean dist directory
         if (fs.existsSync(distDir)) {
@@ -116,7 +116,7 @@ function buildExtension() {
 
 function createZipPackage() {
     try {
-        const zipFileName = `dyslexic-fix.zip`;
+        const zipFileName = `dyslexia-away.zip`;
         const zipPath = path.join(distDir, zipFileName);
 
         // Remove existing zip file
