@@ -14,6 +14,7 @@
     let animationFrameId = null;
     let fontLoaded = false;
     let observer = null;
+    let debounceTimer = null;
 
     init();
 
@@ -107,11 +108,15 @@
             );
 
             if (hasSignificantChanges && shouldApplyStyles()) {
-                // Re-apply styles after DOM changes
-                scheduleUpdate(() => {
-                    document.documentElement.classList.add('opendyslexic-active');
-                    updateCSSVariables();
-                });
+                // Debounce to prevent excessive re-applications during rapid DOM changes
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    // Re-apply styles after DOM changes
+                    scheduleUpdate(() => {
+                        document.documentElement.classList.add('opendyslexic-active');
+                        updateCSSVariables();
+                    });
+                }, 50); // 50ms debounce - optimal balance between UX and performance
             }
         });
 
@@ -126,6 +131,8 @@
             observer.disconnect();
             observer = null;
         }
+        clearTimeout(debounceTimer);
+        debounceTimer = null;
     }
 
     function updateState(newState) {
