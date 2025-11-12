@@ -2,9 +2,9 @@
 @font-face {
     font-family: 'OpenDyslexic';
     /* Multiple URL options with fallback for both Chrome and Firefox extension protocols */
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Regular.otf') format('opentype'),
-        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Regular.otf') format('opentype'),
-        url('fonts/OpenDyslexic-Regular.otf') format('opentype');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Regular.otf') format('opentype'),
+        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Regular.otf') format('opentype'),
+        url('fonts/OpenDyslexicAlta-Regular.otf') format('opentype');
     font-weight: 100 599;
     font-style: normal;
     font-display: swap;
@@ -13,9 +13,9 @@
 /* Bold weight (600-900) */
 @font-face {
     font-family: 'OpenDyslexic';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Bold.otf') format('opentype'),
-        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Bold.otf') format('opentype'),
-        url('fonts/OpenDyslexic-Bold.otf') format('opentype');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Bold.otf') format('opentype'),
+        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Bold.otf') format('opentype'),
+        url('fonts/OpenDyslexicAlta-Bold.otf') format('opentype');
     font-weight: 600 900;
     font-style: normal;
     font-display: swap;
@@ -24,9 +24,9 @@
 /* Italic regular (100-599) */
 @font-face {
     font-family: 'OpenDyslexic';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Italic.otf') format('opentype'),
-        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Italic.otf') format('opentype'),
-        url('fonts/OpenDyslexic-Italic.otf') format('opentype');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Italic.otf') format('opentype'),
+        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-Italic.otf') format('opentype'),
+        url('fonts/OpenDyslexicAlta-Italic.otf') format('opentype');
     font-weight: 100 599;
     font-style: italic;
     font-display: swap;
@@ -35,21 +35,10 @@
 /* Italic bold (600-900) */
 @font-face {
     font-family: 'OpenDyslexic';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Bold-Italic.otf') format('opentype'),
-        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexic-Bold-Italic.otf') format('opentype'),
-        url('fonts/OpenDyslexic-Bold-Italic.otf') format('opentype');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-BoldItalic.otf') format('opentype'),
+        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexicAlta-BoldItalic.otf') format('opentype'),
+        url('fonts/OpenDyslexicAlta-BoldItalic.otf') format('opentype');
     font-weight: 600 900;
     font-style: italic;
-    font-display: swap;
-}
-
-/* Monospace variant */
-@font-face {
-    font-family: 'OpenDyslexic Mono';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
-        url('moz-extension://__MSG_@@extension_id__/fonts/OpenDyslexicMono-Regular.otf') format('opentype'),
-        url('fonts/OpenDyslexicMono-Regular.otf') format('opentype');
-    font-weight: 100 900;
-    font-style: normal;
     font-display: swap;
 }
