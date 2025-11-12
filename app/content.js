@@ -58,18 +58,12 @@
         const shouldApply = shouldApplyStyles();
 
         if (shouldApply) {
-            if (!fontLoaded) {
-                await document.fonts.load('1em OpenDyslexic').catch(() => { });
-                fontLoaded = true;
-            }
             scheduleUpdate(() => {
                 updateCSSVariables();
                 document.documentElement.classList.add('opendyslexic-active');
             });
             startObserver();  // Start monitoring DOM changes for SPAs
         } else {
-            // Reset fontLoaded when styles are removed so font can be reloaded when re-enabled
-            fontLoaded = false;
             scheduleUpdate(removeStyles);
             stopObserver();  // Stop monitoring when disabled
         }
