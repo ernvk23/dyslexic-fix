@@ -1,8 +1,11 @@
 {
     "manifest_version": 3,
-    "name": "DyslexiaAway Beta",
+    "name": "DyslexiaAway",
+    "short_name": "DyslexiaAway",
     "version": "0.9.4",
     "description": "A small browser extension that applies the OpenDyslexic font to webpages. For some of us, that small change makes reading a lot easier.",
+    "author": "ernvk23",
+    "homepage_url": "https://github.com/ernvk23/dyslexia-away",
     "permissions": [
         "storage",
         "activeTab",
@@ -10,7 +13,8 @@
         "scripting"
     ],
     "host_permissions": [
-        "<all_urls>"
+        "http://*/*",
+        "https://*/*"
     ],
     "background": {
         "service_worker": "background-wrapper.js"
@@ -27,7 +31,8 @@
     "content_scripts": [
         {
             "matches": [
-                "<all_urls>"
+                "http://*/*",
+                "https://*/*"
             ],
             "js": [
                 "browser-polyfill.min.js",
@@ -44,10 +49,13 @@
     "web_accessible_resources": [
         {
             "resources": [
-                "fonts/*"
+                "fonts/*",
+                "fonts.css",
+                "style.css"
             ],
             "matches": [
-                "<all_urls>"
+                "http://*/*",
+                "https://*/*"
             ]
         }
     ],
@@ -55,5 +63,8 @@
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",
         "128": "icons/icon128.png"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
     }
 }
