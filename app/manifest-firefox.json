@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "DyslexiaAway Beta",
     "short_name": "DyslexiaAway",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "A simple browser extension that applies the OpenDyslexic font. For some of us, that small change makes reading a lot easier.",
     "default_locale": "en",
     "author": "ernvk23",
@@ -76,7 +76,12 @@
     "browser_specific_settings": {
         "gecko": {
             "id": "dyslexia-away@ernvk23",
-            "strict_min_version": "109.0"
+            "strict_min_version": "109.0",
+            "data_collection_permissions": {
+                "required": [
+                    "none"
+                ]
+            }
         }
     }
 }
