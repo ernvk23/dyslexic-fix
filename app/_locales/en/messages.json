@@ -1,0 +1,26 @@
+{
+    "toggleThemeAria": {
+        "message": "Toggle theme"
+    },
+    "toggleFontAria": {
+        "message": "Toggle OpenDyslexic font"
+    },
+    "letterSpacing": {
+        "message": "Letter Spacing"
+    },
+    "wordSpacing": {
+        "message": "Word Spacing"
+    },
+    "lineHeight": {
+        "message": "Line Height"
+    },
+    "fontSize": {
+        "message": "Font Size"
+    },
+    "excludeSite": {
+        "message": "Exclude site"
+    },
+    "resetDefaults": {
+        "message": "Reset"
+    }
+}

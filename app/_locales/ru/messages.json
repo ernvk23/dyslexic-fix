@@ -1,0 +1,26 @@
+{
+    "toggleThemeAria": {
+        "message": "Переключить тему"
+    },
+    "toggleFontAria": {
+        "message": "Включить/выключить шрифт OpenDyslexic"
+    },
+    "letterSpacing": {
+        "message": "Интервал букв"
+    },
+    "wordSpacing": {
+        "message": "Интервал слов"
+    },
+    "lineHeight": {
+        "message": "Высота строки"
+    },
+    "fontSize": {
+        "message": "Размер шрифта"
+    },
+    "excludeSite": {
+        "message": "Исключить сайт"
+    },
+    "resetDefaults": {
+        "message": "Сбросить"
+    }
+}

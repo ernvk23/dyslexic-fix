@@ -29,6 +29,7 @@ const rootFiles = [
 // Directories to copy
 const fontsDirToCopy = 'fonts';
 const iconsDirToCopy = 'icons';
+const localesDirToCopy = '_locales';
 
 function copyFile(source, destination) {
     const destDir = path.dirname(destination);
@@ -160,6 +161,17 @@ function buildExtension(browser = 'chrome') {
             console.log(`✓ ${iconsDirToCopy}/`);
         } else {
             console.log(`⚠ ${iconsDirToCopy}/ not found`);
+        }
+
+        // Copy _locales/ directory
+        const localesSourcePath = path.join(sourceDir, localesDirToCopy);
+        const localesDestPath = path.join(browserDistDir, localesDirToCopy);
+
+        if (fs.existsSync(localesSourcePath)) {
+            copyDirectory(localesSourcePath, localesDestPath);
+            console.log(`✓ ${localesDirToCopy}/`);
+        } else {
+            console.log(`⚠ ${localesDirToCopy}/ not found`);
         }
 
         console.log(`✓ ${browser} built in dist/${browser}/`);

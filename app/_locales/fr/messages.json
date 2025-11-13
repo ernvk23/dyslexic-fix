@@ -1,0 +1,26 @@
+{
+    "toggleThemeAria": {
+        "message": "Changer le thème"
+    },
+    "toggleFontAria": {
+        "message": "Activer/désactiver la police OpenDyslexic"
+    },
+    "letterSpacing": {
+        "message": "Espacement lettres"
+    },
+    "wordSpacing": {
+        "message": "Espacement mots"
+    },
+    "lineHeight": {
+        "message": "Hauteur ligne"
+    },
+    "fontSize": {
+        "message": "Taille police"
+    },
+    "excludeSite": {
+        "message": "Exclure site"
+    },
+    "resetDefaults": {
+        "message": "Réinitialiser"
+    }
+}

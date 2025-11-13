@@ -1,3 +1,21 @@
+// i18n Translation - Works in both Chrome and Firefox
+function translatePage() {
+    // Translate text content using data-i18n attributes
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const msg = browser.i18n.getMessage(el.getAttribute('data-i18n'));
+        if (msg) el.textContent = msg;
+    });
+
+    // Translate aria-labels using data-i18n-aria attributes
+    document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const msg = browser.i18n.getMessage(el.getAttribute('data-i18n-aria'));
+        if (msg) el.setAttribute('aria-label', msg);
+    });
+}
+
+// Run translation as microtask to not block UI initialization
+Promise.resolve().then(translatePage);
+
 const DEFAULTS = {
     enabled: false,
     letterSpacing: 0,

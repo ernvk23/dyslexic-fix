@@ -1,0 +1,26 @@
+{
+    "toggleThemeAria": {
+        "message": "Cambiar tema"
+    },
+    "toggleFontAria": {
+        "message": "Activar/desactivar fuente OpenDyslexic"
+    },
+    "letterSpacing": {
+        "message": "Espaciado letras"
+    },
+    "wordSpacing": {
+        "message": "Espaciado palabras"
+    },
+    "lineHeight": {
+        "message": "Altura línea"
+    },
+    "fontSize": {
+        "message": "Tamaño fuente"
+    },
+    "excludeSite": {
+        "message": "Excluir sitio"
+    },
+    "resetDefaults": {
+        "message": "Restablecer"
+    }
+}

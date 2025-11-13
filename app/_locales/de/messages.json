@@ -1,0 +1,26 @@
+{
+    "toggleThemeAria": {
+        "message": "Thema umschalten"
+    },
+    "toggleFontAria": {
+        "message": "OpenDyslexic-Schriftart ein-/ausschalten"
+    },
+    "letterSpacing": {
+        "message": "Buchstabenabstand"
+    },
+    "wordSpacing": {
+        "message": "Wortabstand"
+    },
+    "lineHeight": {
+        "message": "Zeilenhöhe"
+    },
+    "fontSize": {
+        "message": "Schriftgröße"
+    },
+    "excludeSite": {
+        "message": "Seite ausschließen"
+    },
+    "resetDefaults": {
+        "message": "Zurücksetzen"
+    }
+}
