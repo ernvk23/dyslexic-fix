@@ -2,6 +2,7 @@
 
 A simple browser extension that applies the **OpenDyslexic** font to webpages.
 For some of us, that small change makes reading a lot easier. ✨
+
 ---
 
 ## Features
@@ -31,28 +32,28 @@ Under extensions, click it to toggle and adjust settings.
 
 ## Motivation
 
-I built this because I wanted something simple that just makes reading feel better.
+I built this because I wanted something simple that just makes reading feel better. 
 A lot of accessibility tools are great but try to do too much.
 This one only does one thing - and that's enough for me.
 
 If reading has ever felt harder than it should be, this might help.
 For me, it made things click in a way they hadn't before.
 
-> [!TIP]
-> *Sometimes it's not you - it's just the font*
 
 ## Technical Details
 
 - **Manifest Version:** 3 (Chrome & Firefox)
 - **Font Loading:** Local font files bundled with extension
-- **Storage:** Chrome sync storage for settings persistence
+- **Storage:** Browser local storage for settings persistence
 - **Compatibility:** Chrome 88+, Firefox 109+
 
 ## License
 
 Licensed under the [MIT License](./LICENSE).
 
+The OpenDyslexic fonts are licensed under the [SIL Open Font License (OFL)](./app/fonts/OFL.txt).
+
 ## Credits
 
-- [OpenDyslexic](https://opendyslexic.org/) - an open typeface made to help with reading
+- [OpenDyslexic](https://opendyslexic.org/) - an open typeface made to help with reading (SIL OFL)
 - [SVGRepo](https://www.svgrepo.com/) - extension icon (CC0 License)
