@@ -70,7 +70,7 @@ body {
     font-family: 'OpenDyslexic', system-ui, -apple-system, sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .popup-container {
@@ -84,6 +84,7 @@ body {
     box-shadow:
         0 2px 8px rgba(0, 0, 0, 0.3),
         0 0 0 1px var(--accent-glow);
+    transition: background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 .header {
@@ -92,6 +93,7 @@ body {
     justify-content: space-between;
     border-bottom: 1px solid var(--header-border);
     padding-bottom: 0.2rem;
+    transition: border-color 0.5s ease;
 }
 
 .main-toggle-container {
@@ -104,6 +106,7 @@ h2 {
     font-size: 0.8rem;
     font-weight: bold;
     color: var(--text-primary);
+    transition: color 0.5s ease;
 }
 
 .toggle-button {
@@ -154,6 +157,7 @@ h2 {
     background: var(--setting-bg);
     border-radius: 0.5rem;
     border: 1px solid var(--setting-border);
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
 label {
@@ -164,6 +168,7 @@ label {
     color: var(--text-secondary);
     white-space: nowrap;
     gap: 0.5rem;
+    transition: color 0.5s ease;
 }
 
 
@@ -207,6 +212,7 @@ label span {
     min-width: 2rem;
     text-align: right;
     flex-shrink: 0;
+    transition: color 0.5s ease;
 }
 
 input[type="range"] {
@@ -218,7 +224,7 @@ input[type="range"] {
     -webkit-appearance: none;
     appearance: initial;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.5s ease;
 }
 
 input[type="range"]:disabled {
@@ -293,7 +299,7 @@ input[type="range"]::-moz-range-thumb:active {
     cursor: pointer;
     font-size: 0.7rem;
     margin-top: 0.5rem;
-    transition: all 0.15s;
+    transition: all 0.5s ease;
     font-family: 'OpenDyslexic', system-ui, -apple-system, sans-serif;
 }
 
@@ -334,7 +340,7 @@ input[type="range"]::-moz-range-thumb:active {
 .theme-icon {
     display: none;
     color: var(--toggle-inactive);
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: color 0.5s ease, transform 0.2s ease;
     position: absolute;
 }
 

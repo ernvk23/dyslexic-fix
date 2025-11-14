@@ -14,7 +14,6 @@
     };
 
     let animationFrameId = null;
-    let fontLoaded = false;
     let observer = null;
     let debounceTimer = null;
 
