@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyslexiaAway - Font Comparison</title>
+    <style>
+        @font-face {
+            font-family: 'OpenDyslexic';
+            src: url('app/fonts/OpenDyslexicAlta-Regular.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            padding: 15px;
+            background: rgb(237, 236, 236);
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 1000px;
+            margin-inline: auto;
+            padding: 6rem;
+            width: 100%;
+            position: relative;
+
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 0;
+            align-items: start;
+            margin-top: 5rem;
+            /* Space for the image between columns */
+        }
+
+        .column {
+            background: white;
+            padding-inline: 40px;
+            padding-block: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            z-index: 1000;
+        }
+
+        .separator {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: bold;
+            height: 100%;
+        }
+
+        .column-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .standard-font {
+            font-family: Arial, sans-serif;
+        }
+
+        .dyslexic-font {
+            font-family: 'OpenDyslexic', sans-serif;
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #333;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #495057;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 16px;
+            color: #495057;
+            font-size: 15px;
+        }
+
+        .demo-text {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+        }
+
+        .demo-text h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .floating-image {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+            z-index: 2000;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-content">
+        <div class="container">
+            <div class="column standard-font">
+                <div class="column-header">
+                    <h1>Standard Font</h1>
+                    <h2>Before DyslexiaAway</h2>
+                </div>
+
+                <p>Reading on the web can be challenging for people with dyslexia. Standard fonts often cause letters to
+                    appear to swap, rotate, or blur together.</p>
+
+                <div class="demo-text">
+                    <h3>Example Text:</h3>
+                    <p>The quick brown fox jumps over the lazy dog. This sentence contains every letter in the alphabet,
+                        making it perfect for testing fonts.</p>
+                    <p>Many people with dyslexia find that certain letters like 'b', 'd', 'p', and 'q' can be easily
+                        confused in standard fonts.</p>
+                </div>
+
+                <p>Without proper font support, reading becomes a struggle rather than an enjoyable activity. The
+                    constant
+                    effort to decipher text can lead to fatigue and frustration.</p>
+            </div>
+
+            <div class="separator">
+            </div>
+
+            <div class="column dyslexic-font">
+                <div class="column-header">
+                    <h1>OpenDyslexic Font</h1>
+                    <h2>After DyslexiaAway</h2>
+                </div>
+
+                <p>Reading on the web can be challenging for people with dyslexia. Standard fonts often cause letters to
+                    appear to swap, rotate, or blur together.</p>
+
+                <div class="demo-text">
+                    <h3>Example Text:</h3>
+                    <p>The quick brown fox jumps over the lazy dog. This sentence contains every letter in the alphabet,
+                        making it perfect for testing fonts.</p>
+                    <p>Many people with dyslexia find that certain letters like 'b', 'd', 'p', and 'q' can be easily
+                        confused in standard fonts.</p>
+                </div>
+
+                <p>Without proper font support, reading becomes a struggle rather than an enjoyable activity. The
+                    constant
+                    effort to decipher text can lead to fatigue and frustration.</p>
+            </div>
+        </div>
+
+    </div>
+    <img src="sample.png" alt="DyslexiaAway Sample" class="floating-image">
+</body>
+
+</html>
